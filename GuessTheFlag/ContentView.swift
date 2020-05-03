@@ -9,16 +9,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showingAlert = false
     var body: some View {
-        
-        // Download free macos App SF Symbols for full system symbols set
-        Button(action : {
-            print("Button was tapped")
-        }) {
-            HStack(spacing: 10) {
-                Image(systemName: "pencil")
-                Text("Edit")
-            }
+        Button("Show Alert") {
+            self.showingAlert = true
+        }
+        .alert(isPresented: $showingAlert) { () -> Alert in
+            Alert(title: Text("Hello SwiftUI"), message: Text("This is some detail message"), dismissButton: .default(Text("OK")))
         }
     }
 }
